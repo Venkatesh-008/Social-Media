@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f2f5;
+}
+
+
+.app-container {
+  display: flex;
+  height: 100vh; 
+  width: 100%;
+}
+
+.left-section {
+  flex: 0.35; 
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.right-section {
+  flex: 0.65; 
+  background: rgba(141, 124, 141, 0.375);
+  padding: 40px 30px;
+  overflow-y: auto;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px 0 0 15px;
+}
+
+.posts-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  padding-right: 200px;
+}
+.post-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8E2DE2, #110d17);
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.post-content {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.action-btn {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+  color: #777;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+
+.comment-section {
+  margin-top: 15px;
+}
+
+.comment-section input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.action-btn.like:hover{
+  color: green;
+}
+.action-btn.dislike:hover{
+  color: red;
+}
+.action-btn.delete:hover{
+  color: red;
+}
