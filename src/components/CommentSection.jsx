@@ -7,9 +7,7 @@ const CommentSection = ({ comments }) => {
       {comments.map((comment, index) => (
         <p key={index}>{comment}</p>
       ))}
-      <div className="comment-avatar">
-  <img src={c?.gender === "female" ? "/images/girl-icon.png" : "/images/boy-icon.png"} alt="User Avatar" />
-</div>
+   
 
     </div>
   );

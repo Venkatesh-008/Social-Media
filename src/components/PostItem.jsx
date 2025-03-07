@@ -33,7 +33,7 @@ const handleDislike = () => {
       
       <div className="post-header">
       <div className="user-avatar">
-      <img src="/public/assets/kitty.png" alt="User Avatar" />
+      <img src="/assets/images/kitty.png" alt="User Avatar" />
 </div>
 
 
@@ -91,7 +91,7 @@ const handleDislike = () => {
     post.comments.map((c, index) => (
       <div key={index} className="comment">
         <div className="user-avatar">
-  <img src="/public/assets/spider.png" alt="User Avatar" />
+  <img src="/assets/images/spider.png" alt="User Avatar" />
 </div>
 
 

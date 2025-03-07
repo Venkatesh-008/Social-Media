@@ -6,7 +6,7 @@ class PostStore {
       id: 1,
       content: "Welcome to our social platform! 🎉 Start posting now!",
       author: "Admin",
-      image: "/public/assets/pic-1.jpg",
+      image: "/assets/images/pic-1.jpg",
       likes: 0,
       dislikes: 0,
       comments: [],
