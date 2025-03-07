@@ -1,28 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./../styles/PostForm.css";
 
 const PostForm = ({ store }) => {
   const [username, setUsername] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username && content) {
-      let imageUrl = null;
-  
-      if (image) {
-        imageUrl = URL.createObjectURL(image); 
-      }
-  
+      const imageUrl = image ? URL.createObjectURL(image) : null;
       store.addPost(username, content, imageUrl);
       setUsername("");
       setContent("");
       setImage(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     }
   };
-  
-  
 
   return (
     <div className="post-form-container">
@@ -41,7 +36,11 @@ const PostForm = ({ store }) => {
           onChange={(e) => setContent(e.target.value)}
           required
         />
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={(e) => setImage(e.target.files[0])}
+        />
         <button type="submit">ADD POST</button>
       </form>
     </div>

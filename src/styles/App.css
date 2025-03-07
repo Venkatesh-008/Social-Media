@@ -9,30 +9,33 @@ body {
   background-color: #f0f2f5;
 }
 
-
 .app-container {
   display: flex;
-  height: 100vh; 
+  height: 100vh;
   width: 100%;
 }
 
 .left-section {
-  flex: 0.35; 
+  flex: 0.35;
   background: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
-
 .right-section {
-  flex: 0.65; 
+  flex: 0.65;
   background: rgba(141, 124, 141, 0.375);
   padding: 40px 30px;
   overflow-y: auto;
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 15px 0 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .posts-heading {
@@ -41,8 +44,8 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
-  padding-right: 200px;
 }
+
 .post-card {
   background: white;
   border-radius: 12px;
@@ -50,12 +53,14 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .post-card:hover {
   transform: translateY(-5px);
 }
-
 
 .post-header {
   display: flex;
@@ -68,7 +73,6 @@ body {
   height: 45px;
   border-radius: 50%;
   background: linear-gradient(135deg, #8E2DE2, #110d17);
- 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,14 +81,7 @@ body {
   font-size: 18px;
 }
 
-.username {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-}
-
 .post-content {
-  margin: 10px 0;
   font-size: 16px;
   color: #444;
 }
@@ -92,15 +89,13 @@ body {
 .post-image {
   width: 100%;
   border-radius: 10px;
-  margin: 10px 0;
 }
-
 
 .post-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .action-btn {
@@ -111,13 +106,29 @@ body {
   border: none;
   border-radius: 5px;
   background-color: #f0f0f0;
-  cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
+.action-btn.like:hover {
+  color: green;
+}
+
+.action-btn.dislike:hover {
+  color: red;
+}
+
+.action-btn.delete {
+  margin-top: 3px;
+}
+
+.action-btn.delete:hover {
+  color: red;
+}
 
 .comment-section {
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .comment-section input {
@@ -128,12 +139,107 @@ body {
   margin-top: 5px;
 }
 
-.action-btn.like:hover{
-  color: green;
+.mob-btn,
+.toggle-left-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
-.action-btn.dislike:hover{
-  color: red;
+
+.mob-btn:hover {
+  background-color: #0056b3;
 }
-.action-btn.delete:hover{
-  color: red;
+
+.toggle-left-btn {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  background: red;
+}
+
+@media (max-width: 770px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .left-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #110d17;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .right-section {
+    flex: 1;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .left-section.visible {
+    display: flex !important;
+  }
+
+  .mob-btn {
+    display: block !important;
+    width: 100vw;
+    margin-left: 10px;
+    padding: 12px;
+    background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.6s ease-out, glowEffect 1.5s infinite alternate;
+}
+
+.mob-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0px 6px 18px rgba(142, 45, 226, 0.6);
+    }
+}
+
+
+  .toggle-left-btn {
+    display: block;
+  }
 }
